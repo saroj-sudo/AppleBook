@@ -1,4 +1,3 @@
-import 'package:applebook/model/dummyData.dart';
 import 'package:applebook/pages/common.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audio_cache.dart';
@@ -36,8 +35,8 @@ class _MenuState extends State<Menu> {
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
             colors: [
-              Colors.purple,
-              Colors.greenAccent,
+              Color.fromRGBO(153, 102, 51, 1),
+              Color.fromRGBO(6, 0, 0, 1),
             ],
           ),
         ),

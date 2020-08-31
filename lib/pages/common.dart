@@ -30,7 +30,7 @@ class _CommonState extends State<Common> {
 
   Widget _buildcard() {
     player.play(widget.alpha[_alphabetIndex].audioPath);
-    return Container(
+    return Expanded(
       child: Column(
         children: <Widget>[
           Text(
@@ -66,52 +66,58 @@ class _CommonState extends State<Common> {
               ),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.all(15),
-            child: Container(
-              height: 50,
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.0),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey.withOpacity(0.2),
-                        spreadRadius: 3.0,
-                        blurRadius: 5.0)
-                  ],
-                  color: Colors.white),
-              child: Center(
-                child: Text(widget.alpha[_alphabetIndex].word,
-                    style: TextStyle(
-                      fontSize: 40,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 4,
-                    )),
-              ),
-            ),
+          SizedBox(
+            height: 25.0,
           ),
+          Text(widget.alpha[_alphabetIndex].word,
+              style: TextStyle(
+                fontSize: 40,
+                color: Colors.black,
+                fontWeight: FontWeight.w900,
+                letterSpacing: 4,
+              )),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               (_alphabetIndex == 0)
                   ? Container()
                   : FlatButton.icon(
-                      color: Colors.grey,
-                      icon: Icon(Icons.arrow_back_ios),
-                      label: Text("Previous"),
+                      // color: Colors.grey,
+                      icon: Icon(
+                        Icons.arrow_back_ios,
+                        size: 20.0,
+                        color: Colors.white,
+                      ),
+                      label: Text(
+                        "Previous",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20.0,
+                        ),
+                      ),
                       onPressed: () {
                         setState(() {
                           _alphabetIndex--;
                         });
                       },
                     ),
+              Spacer(),
               (_alphabetIndex == widget.alpha.length - 1)
                   ? Container()
                   : FlatButton.icon(
-                      color: Colors.grey,
-                      icon: Icon(Icons.arrow_forward_ios),
-                      label: Text("Next"),
+                      // color: Colors.grey,
+                      icon: Icon(
+                        Icons.arrow_forward_ios,
+                        size: 20.0,
+                        color: Colors.white,
+                      ),
+                      label: Text(
+                        "Next",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20.0,
+                        ),
+                      ),
                       onPressed: () {
                         setState(() {
                           _alphabetIndex++;
@@ -143,24 +149,96 @@ class _CommonState extends State<Common> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: widget.alpha == englishCharacters
-          ? Colors.white
-          : widget.alpha == nepalialphabets
-              ? Colors.green
-              : widget.alpha == birds ? Colors.blue : Colors.orange,
-      appBar: AppBar(
-        title: Text("Page Title"),
-        centerTitle: true,
-        elevation: 0.0,
-        backgroundColor: Colors.purple,
-      ),
-      body: ListView(
-        children: [
-          _buildcard(),
-        ],
+      // appBar: AppBar(
+      //   title: Text("Page Title"),
+      //   centerTitle: true,
+      //   elevation: 0.0,
+      //   backgroundColor: Colors.black.withOpacity(0.1),
+      // ),
+      body: SafeArea(
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: (widget.alpha == englishCharacters)
+                  ? [
+                      Color.fromRGBO(0, 191, 255, 1),
+                      Color.fromRGBO(191, 255, 0, 1)
+                    ]
+                  : (widget.alpha == nepalialphabets)
+                      ? [
+                          Color.fromRGBO(255, 64, 0, 1),
+                          Color.fromRGBO(0, 255, 0, 1)
+                        ]
+                      : (widget.alpha == birds)
+                          ? [
+                              Color.fromRGBO(102, 51, 0, 1),
+                              Color.fromRGBO(64, 64, 64, 1),
+                            ]
+                          : (widget.alpha == vegetables)
+                              ? [
+                                  Color.fromRGBO(0, 102, 0, 1),
+                                  Color.fromRGBO(102, 51, 0, 1),
+                                ]
+                              : (widget.alpha == transportation)
+                                  ? [
+                                      Color.fromRGBO(255, 0, 0, 1),
+                                      Color.fromRGBO(13, 13, 13, 1),
+                                    ]
+                                  : (widget.alpha == flowers)
+                                      ? [
+                                          Color.fromRGBO(255, 64, 0, 1),
+                                          Color.fromRGBO(255, 255, 0, 1),
+                                        ]
+                                      : (widget.alpha == fruits)
+                                          ? [
+                                              Color.fromRGBO(0, 77, 26, 1),
+                                              Color.fromRGBO(204, 153, 0, 1),
+                                            ]
+                                          : (widget.alpha == insects)
+                                              ? [
+                                                  Color.fromRGBO(
+                                                      153, 102, 51, 1),
+                                                  Color.fromRGBO(0, 0, 0, 1),
+                                                ]
+                                              : (widget.alpha == bodyparts)
+                                                  ? [
+                                                      Color.fromRGBO(
+                                                          77, 51, 0, 1),
+                                                      Color.fromRGBO(
+                                                          255, 204, 255, 1),
+                                                    ]
+                                                  : (widget.alpha ==
+                                                          wildanimals)
+                                                      ? [
+                                                          Color.fromRGBO(
+                                                              102, 102, 0, 1),
+                                                          Color.fromRGBO(
+                                                              0, 102, 102, 1),
+                                                        ]
+                                                      : (widget.alpha ==
+                                                              domesticanimals)
+                                                          ? [
+                                                              Color.fromRGBO(
+                                                                  255, 0, 0, 1),
+                                                              Color.fromRGBO(13,
+                                                                  13, 13, 1),
+                                                            ]
+                                                          : [
+                                                              Color.fromRGBO(
+                                                                  255,
+                                                                  64,
+                                                                  0,
+                                                                  1),
+                                                              Color.fromRGBO(
+                                                                  0, 128, 0, 1),
+                                                            ],
+            ),
+          ),
+          child: _buildcard(),
+        ),
       ),
     );
   }
 }
-
-//(foo==1)?something1():(foo==2)? something2():(foo==3)? something3(): something4();
